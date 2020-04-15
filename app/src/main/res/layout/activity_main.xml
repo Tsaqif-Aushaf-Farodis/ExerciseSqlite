@@ -19,14 +19,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="Daftar Kontak"
-                android:textSize="22dp"
-                android:textStyle="bold"/>
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Daftar Kontak"
+            android:textSize="22dp"
+            android:textStyle="bold"/>
 
             <ListView
                 android:id="@+id/lv1"
