@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "MyDBName.db";
     public static final String TABLE_NAME = "DaftarKontak";
@@ -17,6 +20,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PHONE = "phone";
     public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_ALAMAT = "alamat";
+
+    private HashMap hp;
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -57,5 +62,19 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         int numRows = (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME);
         return numRows;
+    }
+
+    public ArrayList<String> getAllContacts(){
+        ArrayList<String> arrayList = new ArrayList<String>();
+
+        hp = new HashMap();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from DaftarKontak", null);
+        res.moveToFirst();
+        while (res.isAfterLast() == false){
+            arrayList.add(res.getString(res.getColumnIndex(COLUMN_NAMA)));
+            res.moveToNext();
+        }
+        return arrayList;
     }
 }
