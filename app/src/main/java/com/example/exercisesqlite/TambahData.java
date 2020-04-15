@@ -5,16 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+
 public class TambahData extends AppCompatActivity {
 
     int id_To_Update = 0;
     private DBHelper mydb;
+    //AwesomeValidation validation;
     EditText etNama, etPhone, etEmail, etAlamat;
+    String email;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,17 +77,22 @@ public class TambahData extends AppCompatActivity {
     }
 
     public void run(View view){
+        email = etEmail.getText().toString().trim();
         if (etNama.getText().toString().equals("")||
                 etPhone.getText().toString().equals("")||
                 etEmail.getText().toString().equals("")||
                 etAlamat.getText().toString().equals("")){
             Toast.makeText(getApplicationContext(),"Data Harus Diisi Semua!", Toast.LENGTH_LONG).show();
-        }else{
+        }
+        else if (email.matches(emailPattern)){
             mydb.insertContact(etNama.getText().toString(), etPhone.getText().toString(), etEmail.getText().toString(), etAlamat.getText().toString());
             Toast.makeText(getApplicationContext(), "Insert Data Berhasil", Toast.LENGTH_LONG).show();
 
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"Format Email Salah", Toast.LENGTH_LONG).show();
         }
     }
 }
