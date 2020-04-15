@@ -19,10 +19,9 @@ public class TambahData extends AppCompatActivity {
 
     int id_To_Update = 0;
     private DBHelper mydb;
-    //AwesomeValidation validation;
     EditText etNama, etPhone, etEmail, etAlamat;
     String email;
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]";
+    String formatEmail = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +83,7 @@ public class TambahData extends AppCompatActivity {
                 etAlamat.getText().toString().equals("")){
             Toast.makeText(getApplicationContext(),"Data Harus Diisi Semua!", Toast.LENGTH_LONG).show();
         }
-        else if (email.matches(emailPattern)){
+        else if (email.matches(formatEmail)){
             mydb.insertContact(etNama.getText().toString(), etPhone.getText().toString(), etEmail.getText().toString(), etAlamat.getText().toString());
             Toast.makeText(getApplicationContext(), "Insert Data Berhasil", Toast.LENGTH_LONG).show();
 
