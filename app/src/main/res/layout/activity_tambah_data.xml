@@ -80,8 +80,8 @@
                     android:layout_width="240dp"
                     android:layout_height="match_parent"
                     android:ems="10"
-                    android:hint="Masukkan Nomor Telepon"
-                    android:inputType="textPersonName"/>
+                    android:hint="Masukkan No. Telp"
+                    android:inputType="phone"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -109,7 +109,7 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:hint="Masukkan Email"
-                    android:inputType="textPersonName"/>
+                    android:inputType="textEmailAddress"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -137,7 +137,7 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:hint="Masukkan Alamat"
-                    android:inputType="textPersonName"/>
+                    android:inputType="text"/>
             </TableRow>
         </TableLayout>
 
