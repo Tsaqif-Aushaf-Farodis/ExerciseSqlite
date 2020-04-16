@@ -1,8 +1,10 @@
 package com.example.exercisesqlite;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -82,10 +84,35 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Menu Edit", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.hapus:
-                Toast.makeText(this, "Menu Hapus", Toast.LENGTH_SHORT).show();
-                return true;
+                showDialog();
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setMessage("Apakah Anda Yakin Ingin Menghapus Data?")
+                .setCancelable(false)
+                .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        Toast.makeText(MainActivity.this, "Data Berhasil Terhapus", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol ini diklik, akan menutup dialog
+                        // dan tidak terjadi apa2
+                        dialog.cancel();
+                    }
+                });
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        // menampilkan alert dialog
+        alertDialog.show();
     }
 }
