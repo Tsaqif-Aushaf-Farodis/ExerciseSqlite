@@ -79,15 +79,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.edit:
-                Toast.makeText(this, "Menu Edit", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.hapus:
+        switch (item.getItemId())
+        {
+            case R.id.edit: {
+                Intent i = new Intent(getApplicationContext(),UpdateData.class);
+                startActivity(i);
+            }break;
+            case R.id.hapus: {
                 showDialog();
-            default:
-                return super.onContextItemSelected(item);
+            }break;
         }
+        return super.onContextItemSelected(item);
     }
 
     private void showDialog() {
