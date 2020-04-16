@@ -149,16 +149,14 @@
 
             <Button
                 android:id="@+id/btnBatal"
-                android:layout_width="180dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="BATAL"
-                android:onClick="run"
-                tools:ignore="onClick"/>
+                android:text="BATAL"/>
 
             <Button
                 android:id="@+id/btnUbah"
-                android:layout_width="180dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_gravity="center"
